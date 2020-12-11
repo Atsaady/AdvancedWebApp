@@ -1,5 +1,6 @@
 import './homepage.scss';
 import video from '../Videos/Background.mp4'
+import Searchbar from '../Components/Searchbar/searchbar.js'
 
 function Homepage() {
   return (
@@ -9,8 +10,10 @@ function Homepage() {
                 <video className="bg-video__content" autoPlay muted loop >
                     <source src={video} type="video/mp4"/>
                 </video>  
-            </div>
-
+        </div>
+        <div className="searchbox">
+          <Searchbar/>
+        </div>
       </header>
     </div>
   );
