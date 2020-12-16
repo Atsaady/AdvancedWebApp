@@ -1,6 +1,6 @@
 import './homepage.scss';
 import video from '../Videos/Background.mp4'
-import Searchbar from '../Components/Searchbar/searchbar.js'
+import SearchPage from '../Components/Searchbar/searchbar.js'
 
 function Homepage() {
   return (
@@ -12,7 +12,8 @@ function Homepage() {
                 </video>  
         </div>
         <div className="searchbox">
-          <Searchbar/>
+        <h2>ivestock</h2>
+          <SearchPage/>
         </div>
       </header>
     </div>

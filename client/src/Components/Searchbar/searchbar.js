@@ -1,17 +1,26 @@
 import React from 'react';
+import { MDBCol,MDBIcon,MDBBtn, MDBRow } from "mdbreact";
+import '@fortawesome/fontawesome-free/css/all.min.css'; 
+import'bootstrap-css-only/css/bootstrap.min.css';
+import'mdbreact/dist/css/mdb.css';
+import './searchbar.scss'
 
-function searchbar(keyword, setKeyword) {
-    const BarStyling = {width:"20rem",background:"#F2F1F9", border:"none", padding:"0.5rem"};
+
+
+function searchbar() {
+    
     return (
-        <div>
-            <input 
-     style={BarStyling}
-     key="random1"
-     value={keyword}
-     placeholder={"search country"}
-     onChange={(e) => setKeyword(e.target.value)}
-    />
-        </div>
+      <MDBRow>
+      <MDBCol  md="6">
+      <form className="form-inline mt-4 mb-4"   >
+        <MDBIcon  icon="search" className="text-white"/>
+        <input className="form-control form-control-sm ml-3 w-75 h-400" type="text" placeholder="Search stock here .." aria-label="Search" />
+        <MDBBtn  gradient="blue" rounded >Search</MDBBtn>
+      </form>
+      
+    </MDBCol>
+    </MDBRow>
+     
     );
 }
 
