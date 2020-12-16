@@ -12,7 +12,7 @@ function Homepage() {
                 </video>  
         </div>
         <div className="searchbox">
-        <h2>ivestock</h2>
+        <h2 className="searchbox__header">Investock</h2>
           <SearchPage/>
         </div>
       </header>

@@ -15,5 +15,26 @@
     }
 }
 .searchbox{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+  
+    &__header{
+        background-image: #2980B9;  /* fallback for old browsers */
+        background-image: -webkit-linear-gradient(to bottom, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+        background-image: linear-gradient(to bottom, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        -webkit-background-clip: text;
+        color: transparent;
+        text-transform: uppercase;
+        backface-visibility: hidden;
+        margin-bottom: 1rem;
+        display: inline-block;
+        font-size: 4rem;
+        font-weight: 400;
+        letter-spacing: 2.1rem;
+    }
+
     
 }
