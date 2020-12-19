@@ -17,8 +17,11 @@
   },
   "homepage": "https://github.com/Atsaady/Investock#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "@fortawesome/fontawesome-free": "^5.15.1",
     "express": "^4.17.1",
+    "mongodb": "^3.6.3",
+    "mongoose": "^5.11.8",
     "nodemon": "^2.0.6"
   }
 }
