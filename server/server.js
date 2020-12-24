@@ -1,19 +1,20 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const stocks = require("./routes/stockRoutes");
-const home = require("./routes/homepageRouter");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 const app = express();
 const port = 5000;
 
 app.use(express.json());
 app.use(stocks);
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("client"));
+app.use(cors());
 
 const uri =
-  "mongodb+srv://admin:admin1234@investockcluster0.jp2wh.mongodb.net/<sample_restaurants>?retryWrites=true&w=majority";
+  "mongodb+srv://admin:admin1234@investockcluster0.jp2wh.mongodb.net/<stocks_data>?retryWrites=true&w=majority";
 
 mongoose.connect(uri, {
   useNewUrlParser: true,

@@ -1,10 +1,12 @@
 const mongoose = require("mongoose");
 
+var Schema = mongoose.Schema;
+
 const CommentSchema = new mongoose.Schema({
-  stockname: {
-    type: String,
-    default: "",
-  },
+  // stockname: {
+  //   type: String,
+  //   default: "",
+  // },
   username: {
     type: String,
     required: true,
@@ -19,5 +21,5 @@ const CommentSchema = new mongoose.Schema({
   },
 });
 
-const Comment = mongoose.model("Comment", CommentSchema);
-module.exports = Comment;
+const Comments = mongoose.model("Comments", CommentSchema);
+module.exports = Comments;
