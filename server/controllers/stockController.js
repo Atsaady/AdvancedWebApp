@@ -59,7 +59,13 @@ exports.getStockDataByName = async (req, res) => {
 };
 
 // Getting Specific Stock Rates From API - NOT REAL TIME RATES
-exports.getStockRateByName = async (req, res) => {
-  var stockRate = await StockService.getStockRateByName(req);
+exports.getTodayStockRateByName = async (req, res) => {
+  var stockRate = await StockService.getTodayStockRateByName(req);
+  res.send(stockRate);
+};
+
+// Getting Historical Stock Rates From API - For Charts
+exports.getHistoricalStockRateByName = async (req, res) => {
+  var stockRate = await StockService.getHistoricalStockRateByName(req);
   res.send(stockRate);
 };

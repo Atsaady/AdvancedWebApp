@@ -62,20 +62,32 @@ const getStockDataByName = async (req) => {
   return data;
 };
 
-const getStockRateByName = async (req) => {
+const getTodayStockRateByName = async (req) => {
   const stockname = req.params.stockName;
   var fetchData = await fetch(
     `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${stockname}&interval=5min&apikey=${yourApiKey}`
   );
   var data = await fetchData.json();
+  console.log(data);
+  return data;
+};
+
+const getHistoricalStockRateByName = async (req) => {
+  const stockname = req.params.stockName;
+  var fetchData = await fetch(
+    `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${stockname}&outputsize=compact&apikey=${yourApiKey}`
+  );
+  var data = await fetchData.json();
+  console.log(data);
   return data;
 };
 
 module.exports = {
   getAllStocks,
   getStockDataByName,
-  getStockRateByName,
+  getTodayStockRateByName,
   createStock,
   addCommentToStock,
   getStockComments,
+  getHistoricalStockRateByName,
 };
