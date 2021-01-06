@@ -1,63 +1,67 @@
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  overflow: hidden;
 
-.bg-video{
-    position: absolute;
-    top: 0;
-    left: 0;
+  &__content {
     height: 100%;
-    width:100%;
-    z-index: -1;
-    overflow: hidden;
-    
-    &__content{
-        height: 100%;
-        width:100%;
-        object-fit: fill; 
-    }
+    width: 100%;
+    object-fit: fill;
+  }
 }
 .logo-box {
-    position: absolute;
-    top: 13rem;
-    right: 4.6rem;
+  position: absolute;
+  top: 13rem;
+  right: 4.6rem;
 }
 
 .logo {
-    height: 10rem;
-    width: 10rem;
-  
+  height: 10rem;
+  width: 10rem;
 }
-.searchbox{
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.searchbox {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-  
-    &__header{
-        background-image: #2980B9;  /* fallback for old browsers */
-        background-image: -webkit-linear-gradient(to bottom, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
-        background-image: linear-gradient(to bottom, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        -webkit-background-clip: text;
-        color: transparent;
-        text-transform: uppercase;
-        backface-visibility: hidden;
-        margin-bottom: 1rem;
-        display: inline-block;
-        font-size: 7rem;
-        font-weight: 400;
-        letter-spacing: 2.1rem;
-        span{
-            font-size: 9rem;
-        }
+  &__header {
+    background-image: #2980b9; /* fallback for old browsers */
+    background-image: -webkit-linear-gradient(
+      to bottom,
+      #ffffff,
+      #6dd5fa,
+      #2980b9
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background-image: linear-gradient(
+      to bottom,
+      #ffffff,
+      #6dd5fa,
+      #2980b9
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    -webkit-background-clip: text;
+    color: transparent;
+    text-transform: uppercase;
+    backface-visibility: hidden;
+    margin-bottom: 1rem;
+    display: inline-block;
+    font-size: 7rem;
+    font-weight: 400;
+    letter-spacing: 2.1rem;
+    span {
+      font-size: 9rem;
     }
-
-    
+  }
 }
 
-.stockbarbox{
-    background-color: #c3bdbd;
+.stockbarbox {
+  background-color: #c3bdbd;
 }
 
-.footer{
-margin-top: 68rem;
-
-}
+// .footer {
+//   margin-top: 68rem;
+// }

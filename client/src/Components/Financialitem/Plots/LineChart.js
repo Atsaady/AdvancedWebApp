@@ -16,7 +16,7 @@ const LineChart = ({ financialItem, financialItemName, color }) => {
           },
         ]}
         layout={{
-          width: 1700,
+          width: 1300,
           height: 600,
           title: financialItemName,
         }}

@@ -9,7 +9,7 @@ const useStyles = makeStyles({
     minWidth: 220,
     maxWidth: 200,
     marginTop: "7%",
-    marginLeft: "10%",
+    marginLeft: "7%",
     float: "left",
   },
 

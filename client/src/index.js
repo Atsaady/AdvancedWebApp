@@ -1,13 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.scss";
-import Homepage from "./Homepage/homepage";
-import StockPage from "./StockPage/StockPage";
+import App from "./Components/App";
+import {
+  BrowserRouter,
+  useParams,
+  Switch,
+  Route,
+  Link,
+} from "react-router-dom";
 
 ReactDOM.render(
-  <>
-    {/* <Homepage /> */}
-    <StockPage stockName={"MSFT"} />
-  </>,
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
   document.getElementById("root")
 );
+
+{
+  /* <Homepage /> 
+    <StockPage stockName={"MSFT"} />
+    <Socket /> vv */
+}

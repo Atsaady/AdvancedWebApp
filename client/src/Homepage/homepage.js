@@ -34,8 +34,8 @@ function Homepage() {
           </header>
         </div>
       </body>
-      <footer className="footer">
-        <Footer />
+      <footer className="footer" style={{ marginTop: "47rem" }}>
+        <Footer marginTop={"40%"} />
       </footer>
       x
     </>

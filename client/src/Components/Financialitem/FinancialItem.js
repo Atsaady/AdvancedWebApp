@@ -64,7 +64,10 @@ const FinancialItem = ({
   };
 
   return (
-    <div className="financial-item-big-wrapper" style={{ marginLeft: "100px" }}>
+    <div
+      className="financial-item-big-wrapper"
+      style={{ marginLeft: "3%", marginTop: "-10px" }}
+    >
       <div>{financialItem ? displayTheRightPlot() : null}</div>
       <div>
         {financialItem ? (

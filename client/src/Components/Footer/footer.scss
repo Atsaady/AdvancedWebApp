@@ -5,6 +5,7 @@
   font-size: 1.4rem;
   color: #f7f7f7;
   height: 40rem;
+  margin-top: 0%;
 
   @include respond(tab-port) {
     padding: 8rem 0;

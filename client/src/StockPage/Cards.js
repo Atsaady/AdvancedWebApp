@@ -1,6 +1,6 @@
 import React from "react";
 import CardDetail from "../Components/CardDetail/CardDetail";
-import "../StockPage/StockPage";
+import "./StockPage.scss";
 
 function retrieve(stockName) {
   return fetch(

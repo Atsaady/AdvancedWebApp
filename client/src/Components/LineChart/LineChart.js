@@ -15,7 +15,11 @@ const LineChart = ({ financialItem, financialItemName, color }) => {
             marker: { color: color },
           },
         ]}
-        layout={{ width: 720, height: 440, title: financialItemName }}
+        layout={{
+          width: 720,
+          height: 440,
+          title: financialItemName,
+        }}
         options={{ displaylogo: "false" }}
       />
     </Fragment>

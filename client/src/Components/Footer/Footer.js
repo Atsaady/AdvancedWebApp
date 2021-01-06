@@ -2,9 +2,9 @@ import React from "react";
 import "./footer.scss";
 import img from "../../Videos/logoinvestock.png";
 
-function footer() {
+function footer({ marginTop }) {
   return (
-    <footer className="footer">
+    <footer className="footer" style={{ marginTop: marginTop }}>
       <div className="footer__logo-box">
         <div className="footer__logo">
           <img alt="Full logo" className="footer__logo" src={img} />
