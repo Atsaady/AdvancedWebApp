@@ -2,15 +2,20 @@ const commentModel = require("../server/models/commentSchema");
 const stockModel = require("../server/models/stockSchema");
 
 module.exports = function (server) {
-  const io = require("socket.io")(server);
+  const io = require("socket.io")(
+    server /*, {
+    cors: {
+      origins: ["http://localhost:3000"],
+      methods: ["GET", "POST"],
+      credentials: false,
+    },
+  }*/
+  );
 
   io.on("connection", (socket) => {
-    socket.emit("hello", "world");
     console.log("New Connection");
 
     socket.on("new-comment", (username, comment, stockname) => {
-      socket.join(stockname);
-
       // create a new message and save
       let newComment = new commentModel({ username, comment });
       let id = newComment._id;
@@ -23,13 +28,12 @@ module.exports = function (server) {
         doc.save();
       });
 
-      io.to(stockname).emit("comment", {
+      io.emit("comment", {
         user: username,
         text: comment,
         date: time,
+        stockname: stockname,
       });
     });
   });
-
-  // put other things that use io here
 };

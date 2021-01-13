@@ -14,7 +14,7 @@ router.get(
 );
 router.get(
   "/stocks/historicalstockrate/:stockName",
-  StockController.getHistocricalStockRateByName
+  StockController.getHistoricalStockRateByName
 );
 
 router.post("/stocks", StockController.createStock);

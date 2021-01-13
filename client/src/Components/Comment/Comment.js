@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Comment, Form, Header } from "semantic-ui-react";
+import { Comment } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 
 export default function StockComment(props) {

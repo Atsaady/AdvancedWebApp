@@ -39,8 +39,10 @@ export default function Comments(props) {
   // Get new Comment from server for the specific stock
   useEffect(() => {
     props.socket.on("comment", (comment) => {
-      console.log(comment);
-      setComments((comm) => [...comm, comment]);
+      if (props.stockName == comment.stockname) {
+        console.log(comment);
+        setComments((comm) => [...comm, comment]);
+      }
     });
   }, []);
 
