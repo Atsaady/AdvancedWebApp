@@ -6,8 +6,11 @@ import StockComment from "../Components/Comment/Comment";
 
 async function fetchComments(stockname) {
   try {
-    let response = await fetch("http://localhost:5000/dev/families");
+    let response = await fetch(
+      `http://localhost:5000/stocks/${stockname}/comments`
+    );
     let responseJson = await response.json();
+    console.log(responseJson);
     return responseJson;
   } catch (error) {
     console.error(error);
@@ -34,7 +37,11 @@ export default function Comments(props) {
   }
 
   // Need to initialize and get all the comments from server
-  useEffect(() => {}, []);
+  useEffect(() => {
+    fetchComments(props.stockName).then((data) => setComments(data));
+  }, [setComments]);
+
+  console.log(comments);
 
   // Get new Comment from server for the specific stock
   useEffect(() => {
@@ -59,24 +66,15 @@ export default function Comments(props) {
       </Header>
       <div className={"scrollBar"}>
         {comments.map((comment) => {
-          return <StockComment username={comment.username} />;
+          console.log(comment);
+          return (
+            <StockComment
+              username={comment.username}
+              time={comment.created}
+              text={comment.comment}
+            />
+          );
         })}
-        <StockComment />
-        <StockComment />
-        <StockComment />
-        <StockComment />
-        <StockComment />
-        <StockComment />
-        <StockComment />
-        <StockComment />
-        <StockComment />
-        <StockComment />
-        <StockComment />
-        <StockComment />
-        <StockComment />
-        <StockComment />
-        <StockComment />
-        <StockComment />
       </div>
 
       <Form reply onSubmit={sendComment}>

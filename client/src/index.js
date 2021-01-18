@@ -9,9 +9,3 @@ ReactDOM.render(
   </BrowserRouter>,
   document.getElementById("root")
 );
-
-{
-  /* <Homepage /> 
-    <StockPage stockName={"MSFT"} />
-    <Socket /> vv */
-}

@@ -29,7 +29,6 @@ export default function StockPage(props) {
       <StockChart stockName={stock} />
       <Comments stockName={stock} socket={socket} />
       <Details stockName={stock} />
-      <Footer marginTop={"37%"} />
     </>
   );
 }

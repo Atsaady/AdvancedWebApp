@@ -29,9 +29,9 @@ module.exports = function (server) {
       });
 
       io.emit("comment", {
-        user: username,
-        text: comment,
-        date: time,
+        username: username,
+        comment: comment,
+        created: time,
         stockname: stockname,
       });
     });
