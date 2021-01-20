@@ -66,7 +66,6 @@ export default function Comments(props) {
       </Header>
       <div className={"scrollBar"}>
         {comments.map((comment) => {
-          console.log(comment);
           return (
             <StockComment
               username={comment.username}

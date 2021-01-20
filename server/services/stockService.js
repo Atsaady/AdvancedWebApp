@@ -39,23 +39,6 @@ const createStock = async (req) => {
   });
 };
 
-// const getStockComments = async (req) => {
-//   const stockname = req.params.stockName;
-//   var comments = [];
-//   var data = [];
-
-//   const stock = await stockModel.findOne({ name: stockname });
-//   comments = stock.comments;
-//   comments.forEach(async (commentId) => {
-//     const comm = await commentModel.findOne({ _id: commentId });
-//     data.push(comm);
-//     console.log(data);
-//   });
-//   console.log(data);
-//   return data;
-
-// };
-
 const getStockComments = async (req) => {
   const stockname = req.params.stockName;
   var comments = [];

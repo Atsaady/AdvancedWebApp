@@ -2,15 +2,13 @@ const commentModel = require("../server/models/commentSchema");
 const stockModel = require("../server/models/stockSchema");
 
 module.exports = function (server) {
-  const io = require("socket.io")(
-    server /*, {
+  const io = require("socket.io")(server, {
     cors: {
       origins: ["http://localhost:3000"],
       methods: ["GET", "POST"],
       credentials: false,
     },
-  }*/
-  );
+  });
 
   io.on("connection", (socket) => {
     console.log("New Connection");

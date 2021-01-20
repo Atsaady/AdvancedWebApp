@@ -6,16 +6,18 @@ const stocks = require("./routes/stockRoutes");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 require("./socketEvents")(server);
+require("dotenv").config({
+  path:
+    "/Users/maoragai/Desktop/Studies/Advanced Web Applications/Investock/config/.env",
+});
 
-const port = 5000;
+const port = process.env.PORT;
 
+app.use(cors());
 app.use(stocks);
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
-// app.set("socketio", io);
 
-const uri =
-  "mongodb+srv://admin:admin1234@investockcluster0.jp2wh.mongodb.net/<stocks_data>?retryWrites=true&w=majority";
+const uri = process.env.URI;
 
 mongoose.connect(uri, {
   useNewUrlParser: true,
