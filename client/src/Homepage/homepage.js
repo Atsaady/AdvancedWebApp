@@ -2,8 +2,6 @@ import "./homepage.scss";
 import video from "../Videos/Background.mp4";
 import SearchPage from "../Components/Searchbar/searchbar";
 import Stockbar from "../Components/Stockbar/Stockbar";
-import Navbar from "../Components/Navbar/Navbar";
-import Footer from "../Components/Footer/Footer";
 import img from "../Videos/logoinvestock.png";
 import stockslist from "../Components/stocksForSearch";
 
@@ -21,7 +19,6 @@ function Homepage() {
                 <source src={video} type="video/mp4" />
               </video>
             </div>
-            <Navbar />
             <div className="stockbarbox">
               <Stockbar />
             </div>
