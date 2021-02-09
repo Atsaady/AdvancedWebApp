@@ -4,7 +4,7 @@ const Comments = require("./commentSchema");
 var Schema = mongoose.Schema;
 
 const StockSchema = new mongoose.Schema({
-  name: {
+  title: {
     type: String,
     required: true,
     uppercase: true,

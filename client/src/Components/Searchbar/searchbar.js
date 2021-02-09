@@ -34,10 +34,11 @@ export default class searchbar extends React.Component {
     return (
       <div
         style={{
+          position:"absolute",
           borderRadius: "3px",
           borderSizing: "border-box",
-          width: "48rem",
-          height: "18rem",
+          width: "57rem",
+          height: "10rem",
           border: "1px solid aqau",
           float: "right",
           backgroundImage: "radial-gradient( #6dd4fa73, #297fb979)",
@@ -98,7 +99,7 @@ export default class searchbar extends React.Component {
                 textAlign: "right",
               }}
               type="text"
-              placeholder=" .. חפש נייר ערך  &#xF002;"
+              placeholder={this.props.searchText}
               aria-label="Search"
             />
           </form>

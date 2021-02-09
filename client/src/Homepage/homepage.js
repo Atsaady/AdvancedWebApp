@@ -4,6 +4,7 @@ import SearchPage from "../Components/Searchbar/searchbar";
 import Stockbar from "../Components/Stockbar/Stockbar";
 import img from "../Videos/logoinvestock.png";
 import stockslist from "../Components/stocksForSearch";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function Homepage() {
   return (
@@ -26,7 +27,7 @@ function Homepage() {
               <h2 className="searchbox__header">
                 Inve<span>S</span>tock
               </h2>
-              <SearchPage items={stockslist} />
+              <SearchPage items={stockslist} searchText={" .. חפש נייר ערך  &#xF002"}/>
             </div>
           </header>
         </div>
