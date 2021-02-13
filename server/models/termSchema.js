@@ -7,11 +7,13 @@ const termSchema = new mongoose.Schema({
     type: String,
     required: true,
     uppercase: true,
+    unique: true
   },
   description: String,
-  urlVideo : String
+  urlVideo : String,
+  firstLetter:String
   
 });
 
-const term = mongoose.model("Term", termSchema);
-module.exports = Stock;
+const Term = mongoose.model("Term", termSchema);
+module.exports = Term;

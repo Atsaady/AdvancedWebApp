@@ -1,21 +1,24 @@
+// Defines the way in which the client requests are handled by the application endpoints
+
+const express = require("express");
 const router = express.Router();
 
-const StockController = require("../controllers/tremController");
+const termController = require("../controllers/tremController");
 
-router.get("/stocks", StockController.getAllStocks);
-router.get("/stocks/:stockName", StockController.getStockDataByName);
-router.get("/stocks/:stockName/comments", StockController.getStockComments);
-router.get(
-  "/stocks/stockrate/:stockName",
-  StockController.getTodayStockRateByName
-);
-router.get(
-  "/stocks/historicalstockrate/:stockName",
-  StockController.getHistoricalStockRateByName
-);
+//GET
+router.get("/terms/:termName", termController.getTermByName);
+router.get("/terms/:termNameByLetter", termController.getTermsByFirstLetter); //Need to change to first letter
+router.get("/terms", termController.getAllTerms);
 
-router.post("/stocks", StockController.createStock);
+//CREATE
+router.post("/terms", termController.createTerm);
 
-router.put("/stocks/:stockName/comment", StockController.addCommentToStock);
+//UPDATE
+router.put("/terms/:termName", termController.updateTerm);
+
+//DELETE
+router.delete("/terms/:termName",termController.deleteTerm);
+router.delete("/terms/:termNameByLetter",termController.deleteTermsByLetter);
+
 
 module.exports = router;
