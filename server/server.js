@@ -3,6 +3,7 @@ var server = require("http").createServer(app);
 var io = require("socket.io")(server);
 const mongoose = require("mongoose");
 const stocks = require("./routes/stockRoutes");
+const terms = require("./routes/termRoutes");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 require("./socketEvents")(server);
@@ -12,9 +13,9 @@ require("dotenv").config({
 });
 
 const port = process.env.PORT;
-
 app.use(cors());
 app.use(stocks);
+app.use(terms);
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const uri = process.env.URI;

@@ -23,6 +23,9 @@ export default function App() {
         <Route exact path="/dic">
           <Dictionary />
         </Route>
+        <Route exact path="/:stock">
+          <StockPage/>
+        </Route>
       </Switch>
       <Footer marginTop={"47%"} />
       </BrowserRouter>
