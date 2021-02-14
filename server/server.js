@@ -1,19 +1,27 @@
-const express = require("express");
+var app = require("express")();
+var server = require("http").createServer(app);
+var io = require("socket.io")(server);
 const mongoose = require("mongoose");
 const stocks = require("./routes/stockRoutes");
-const home = require("./routes/homepageRouter");
+const terms = require("./routes/termRoutes");
 const bodyParser = require("body-parser");
+const cors = require("cors");
+require("./socketEvents")(server);
+// require("dotenv").config({
+//   path:
+//     "\Investock\config\.env",
+// });
 
-const app = express();
+// const port = process.env.PORT;
+const uri="mongodb+srv://admin:admin1234@investockcluster0.jp2wh.mongodb.net/<stocks_data>?retryWrites=true&w=majority"
+
 const port = 5000;
-
-app.use(express.json());
+app.use(cors());
 app.use(stocks);
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static("client"));
+app.use(terms);
+app.use(bodyParser.urlencoded({ extended: true }));
 
-const uri =
-  "mongodb+srv://admin:admin1234@investockcluster0.jp2wh.mongodb.net/<sample_restaurants>?retryWrites=true&w=majority";
+// const uri = process.env.URI;
 
 mongoose.connect(uri, {
   useNewUrlParser: true,
@@ -25,6 +33,6 @@ connection.once("open", () => {
   console.log("MongoDB database connection established successfully");
 });
 
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });

@@ -1,15 +1,15 @@
 const mongoose = require("mongoose");
+const Comments = require("./commentSchema");
+
+var Schema = mongoose.Schema;
 
 const StockSchema = new mongoose.Schema({
-  name: {
+  title: {
     type: String,
     required: true,
     uppercase: true,
   },
-  comments: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Comment",
-  },
+  comments: [{ type: Schema.Types.ObjectId, ref: "Comments" }],
 });
 
 const Stock = mongoose.model("Stock", StockSchema);
