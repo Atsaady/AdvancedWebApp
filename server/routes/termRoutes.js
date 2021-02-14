@@ -21,4 +21,4 @@ router.delete("/terms/:termName",termController.deleteTerm);
 router.delete("/terms/:termNameByLetter",termController.deleteTermsByLetter);
 
 
-module.exports = router;
+module.exports =router;

@@ -23,8 +23,8 @@ export default function App() {
         <Route exact path="/dic">
           <Dictionary />
         </Route>
-        <Route path="/:stock">
-          <StockPage />
+        <Route exact path="/:stock">
+          <StockPage/>
         </Route>
       </Switch>
       <Footer marginTop={"47%"} />
