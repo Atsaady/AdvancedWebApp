@@ -10,11 +10,9 @@
 
 const stockModel = require("../models/stockSchema");
 const commentModel = require("../models/commentSchema");
+const rankModel = require("../models/rankSchema");
 const fetch = require("node-fetch");
-const { json } = require("body-parser");
-const { connection } = require("mongoose");
 var AlphaVantageAPI = require("alpha-vantage-cli").AlphaVantageAPI;
-
 var yourApiKey = "GWODV4ZB7TPUMHKL";
 var alphaVantageAPI = new AlphaVantageAPI(yourApiKey, "compact", true);
 
@@ -43,12 +41,13 @@ const getStockComments = async (req) => {
   const stockname = req.params.stockName;
   var comments = [];
   var data = [];
-
   const stock = await stockModel.findOne({ name: stockname });
   comments = stock.comments;
-  for (const comment in comments) {
-    const comm = await commentModel.findOne({ _id: comments[comment] });
-    data.push(comm);
+  if(comments[0]!==null){
+    for (const comment in comments) {
+      const comm = await commentModel.findOne({ _id: comments[comment] });
+      data.push(comm);
+    }
   }
   return data;
 };
@@ -65,12 +64,21 @@ const addCommentToStock = async (req) => {
 };
 
 const getStockDataByName = async (req) => {
-  const stockname = req.params.stockName;
+  let stock = await stockModel.findOne({ name: req.params.stockName });
   var fetchData = await fetch(
-    `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${stockname}&apikey=${yourApiKey}`
+    `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${req.params.stockName}&apikey=${yourApiKey}`
   );
   var data = await fetchData.json();
-  // console.log(data);
+  if(stock.rank[0]==null){
+    let rank = new rankModel({stockrank: Math.floor(Math.random() * (10 - 3 + 1)) + 3, 
+      companyrank: Math.floor(Math.random() * (10 - 3 + 1)) + 3});
+    rank = await rank.save();
+    stock.rank.push(rank._id);
+    stock = await stock.save();
+  }
+  let rank = await rankModel.findOne({ _id: stock.rank[0] });
+  data.stockrank = rank.stockrank;
+  data.companyrank = rank.companyrank;
   return data;
 };
 
@@ -80,7 +88,6 @@ const getTodayStockRateByName = async (req) => {
     `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${stockname}&interval=5min&apikey=${yourApiKey}`
   );
   var data = await fetchData.json();
-  // console.log(data);
   return data;
 };
 
@@ -90,7 +97,6 @@ const getHistoricalStockRateByName = async (req) => {
     `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${stockname}&outputsize=compact&apikey=${yourApiKey}`
   );
   var data = await fetchData.json();
-  // console.log(data);
   return data;
 };
 

@@ -18,6 +18,16 @@ function rate(data, title) {
   }
 }
 
+function getCurrentRate(min, max) {
+  if(min > max) {
+    var temp = min;
+    min = max;
+    max = temp;
+  }
+  var range = max - min;
+  return min + range * Math.random();
+}
+
 const StockPage = ({ stockName }) => {
   const [stockDetails, setStockDetails] = React.useState(null);
   React.useEffect(() => {
@@ -31,9 +41,10 @@ const StockPage = ({ stockName }) => {
 
   if (stockName === null || stockDetails === null) return "";
 
+
   return (
     <div className="cards">
-      <CardDetail title={"Current Rate"} rate={2} />
+      <CardDetail title={"Current Rate"} rate={getCurrentRate(parseFloat(rate(stockDetails, "Open")), parseFloat(rate(stockDetails, "Close"))).toFixed(4)} />
       <CardDetail title={"Open"} rate={rate(stockDetails, "Open")} />
       <CardDetail title={"High"} rate={rate(stockDetails, "High")} />
       <CardDetail title={"Close"} rate={rate(stockDetails, "Close")} />
