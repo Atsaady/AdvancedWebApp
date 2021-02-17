@@ -4,6 +4,7 @@ import { Container, Jumbotron, Col, Row ,Form,Button} from "react-bootstrap";
 import "./balanceCalculator.scss";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "font-awesome/css/font-awesome.min.css";
+import ReactPlayer from 'react-player';
 
 class BalanceCalculator extends Component  {
     constructor(props){
@@ -105,7 +106,7 @@ class BalanceCalculator extends Component  {
   <Form.Row  >
     <Form.Group className="balanceform__group" as={Col} xs={4} controlId="formGridEmail">
       <Form.Label className="balanceform__group__label">מזומן 2018</Form.Label>
-      <Form.Control onChange={this.handleInputChange} name="cash201820  " className="balanceform__group__input" type="number" placeholder="הכנס כמות מזומנים לשנת 2018" />
+      <Form.Control onChange={this.handleInputChange} name="cash2018" className="balanceform__group__input" type="number" placeholder="הכנס כמות מזומנים לשנת 2018" />
     </Form.Group>
 
     <Form.Group as={Col} className="balanceform__group" xs={4} controlId="formGridPassword">
@@ -158,9 +159,13 @@ class BalanceCalculator extends Component  {
     </Col>
   </Form>
   <hr/>
-  <h1 className="score">{score} : התוצאה היא </h1>
-  <h1 className="score"> : דעתינו (לא המלצה) היא</h1>
-  <h1 className="score">{idea}</h1>
+  <h1 className="h1">{score} : התוצאה היא </h1>
+  <h1 className="h1"> : דעתינו (לא המלצה) היא</h1>
+  <h1 className="h1">{idea}</h1>
+
+  <hr/>
+  <h1 style={{textAlign:'center'}} > הסבר קצר על איך לקרוא מאזן</h1>
+  <ReactPlayer controls="true"  style={{display:'block',margin:'auto'}} url='https://www.youtube.com/watch?v=7THNE8xEcHk&t=644s' />
 </Jumbotron>
 </Container>
   );
