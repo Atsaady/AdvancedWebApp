@@ -5,6 +5,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import "font-awesome/css/font-awesome.min.css";
+import "./searchbar.scss";
 
 export default class searchbar extends React.Component {
   constructor(props) {
@@ -20,6 +21,12 @@ export default class searchbar extends React.Component {
     e.preventDefault();
     this.setState({ value: this.myRef.current.value.toUpperCase() });
   };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.setState({ value: this.myRef.current.value.toUpperCase() });
+  };
+
 
   onTextChange = (e) => {
     const { items } = this.props;
@@ -61,7 +68,7 @@ export default class searchbar extends React.Component {
           }}
         >
           {suggestions.map((item) => (
-            <li
+            <li className="li_results"
               style={{
                 color: "coral",
                 padding: "2px 5px 2px",
