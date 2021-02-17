@@ -11,10 +11,14 @@ require("./socketEvents")(server);
 const uri =
   "mongodb+srv://admin:admin1234@investockcluster0.jp2wh.mongodb.net/<stocks_data>?retryWrites=true&w=majority";
 const port = 5000;
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 app.use(stocks);
 app.use(terms);
-app.use(bodyParser.urlencoded({ extended: true }));
+
+
 
 mongoose.connect(uri, {
   useNewUrlParser: true,

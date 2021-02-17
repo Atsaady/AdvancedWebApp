@@ -65,7 +65,7 @@ export default function Comments(props) {
         Comments
       </Header>
       <div className={"scrollBar"}>
-        {comments.map((comment) => {
+        {comments ? comments.map((comment) => {
           return (
             <StockComment
               username={comment.username}
@@ -73,7 +73,7 @@ export default function Comments(props) {
               text={comment.comment}
             />
           );
-        })}
+        }) : "No comments yet. Be the first to comment!"}
       </div>
 
       <Form reply onSubmit={sendComment}>

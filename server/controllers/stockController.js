@@ -32,9 +32,8 @@ exports.createStock = async (req, res) => {
 // Get all Comments of Specific Stock
 exports.getStockComments = async (req, res) => {
   var comments = await StockService.getStockComments(req);
-  console.log(comments);
   try {
-    res.send(comments);
+    if(comments) res.send(comments);
   } catch (err) {
     res.status(500).send(err);
   }

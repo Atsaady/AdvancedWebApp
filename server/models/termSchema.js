@@ -3,16 +3,14 @@ const mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 const termSchema = new mongoose.Schema({
-  name: {
+  title: {
     type: String,
     required: true,
-    uppercase: true,
     unique: true
   },
-  description: String,
-  urlVideo : String,
-  firstLetter:String
-  
+  description: { type: String},
+  urlVideo : { type: String},
+  firstLetter: { type: String},
 });
 
 const Term = mongoose.model("Term", termSchema);

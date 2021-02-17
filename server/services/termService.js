@@ -8,26 +8,21 @@
     - Returns the completed work a response to the manager (Controller)
 */
 const termModel = require("../models/termSchema");
-const { json } = require("body-parser");
-const { connection } = require("mongoose");
-const { query } = require("express");
+
 
 const createTerm = async (req) => {
-  var query = req.body.title;
-  termModel.findOne({ title: query }, function (err, term) {
+  termModel.findOne({ title: req.body.title }, function (err, term) {
     if (err) console.log(err);
-    if (term) console.log("This stock already been saved");
+    if (term) console.log("This term already been created");
     else {
       var term = new termModel({
-          name: req.body.title,
+          title: req.body.title,
           description: req.body.description,
           urlVideo : req.body.urlVideo
-      }
-          
-      );
+      });
       term.save(function (err, example) {
         if (err) console.log(err);
-        console.log("New term created");
+        console.log("New term created!");
         return term;
       });
     }
