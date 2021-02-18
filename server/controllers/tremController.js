@@ -92,7 +92,7 @@ exports.deleteTermsByLetter = async (req, res) => {
 };
 
 exports.scrape = async () => {
-  scrapeService.scrape();  
-  console.log("here");
+  await scrapeService.scrape();  
 };
+
 

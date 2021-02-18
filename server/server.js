@@ -18,8 +18,6 @@ app.use(cors());
 app.use(stocks);
 app.use(terms);
 
-
-
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useCreateIndex: true,
