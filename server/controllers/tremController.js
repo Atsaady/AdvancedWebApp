@@ -8,6 +8,8 @@
 */
 
 const TermService = require("../services/termService");
+const scrapeService =require("../services/scrapeService");
+
 
 // Getting All Stocks From the Database - Really Needed?
 exports.getAllTerms = async (req, res) => {
@@ -87,5 +89,10 @@ exports.deleteTermsByLetter = async (req, res) => {
     } catch (err) {
       res.status(500).send(err);
     }
+};
+
+exports.scrape = async () => {
+  scrapeService.scrape();  
+  console.log("here");
 };
 

@@ -10,6 +10,7 @@
 const termModel = require("../models/termSchema");
 
 
+
 const createTerm = async (req) => {
   termModel.findOne({ title: req.body.title }, function (err, term) {
     if (err) console.log(err);
@@ -95,7 +96,6 @@ const getAllTerms  = async () => {
 
 
 
-
 module.exports = {
   getAllTerms,
   getTermByName,
@@ -103,5 +103,5 @@ module.exports = {
   createTerm,
   deleteTerm,
   deleteTermsByLetter,
-  updateTerm
+  updateTerm,
 };
