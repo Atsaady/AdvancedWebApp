@@ -21,9 +21,16 @@ module.exports = function (server) {
       newComment = newComment.save();
 
       // get the associated user and add new message to user's messages array
-      stockModel.findOne({ name: stockname }).then((doc) => {
-        doc.comments.push(id);
-        doc.save();
+      var stock = stockModel.findOne({ name: stockname }).then((doc)=>{
+        if(!doc){
+          let newStock = new stockModel({ name: stockname});
+          newStock.comments.push(id);
+          newStock.save();
+        }      
+        else{
+          doc.comments.push(id);
+          doc.save();
+        }
       });
 
       io.emit("comment", {

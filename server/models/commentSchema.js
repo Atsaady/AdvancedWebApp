@@ -3,10 +3,6 @@ const mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 const CommentSchema = new mongoose.Schema({
-  // stockname: {
-  //   type: String,
-  //   default: "",
-  // },
   username: {
     type: String,
     required: true,

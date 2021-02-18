@@ -1,18 +1,33 @@
 import React, { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { MDBCol, MDBIcon, MDBBtn, MDBRow } from "mdbreact";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import "font-awesome/css/font-awesome.min.css";
+import "./searchbar.scss";
 
 export default class searchbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       suggestions: [],
+      value: "",
     };
+    this.myRef = React.createRef();
   }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.setState({ value: this.myRef.current.value.toUpperCase() });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.setState({ value: this.myRef.current.value.toUpperCase() });
+  };
+
+
   onTextChange = (e) => {
     const { items } = this.props;
     const value = e.target.value;
@@ -34,7 +49,7 @@ export default class searchbar extends React.Component {
     return (
       <div
         style={{
-          position:"absolute",
+          position: "absolute",
           borderRadius: "3px",
           borderSizing: "border-box",
           width: "57rem",
@@ -53,15 +68,18 @@ export default class searchbar extends React.Component {
           }}
         >
           {suggestions.map((item) => (
-            <li
+            <li className="li_results"
               style={{
                 color: "coral",
                 padding: "2px 5px 2px",
                 fontSize: "1.8rem",
                 cursor: "pointer",
+                textTransform: "uppercase",
               }}
             >
-              {item}
+              <Link to={`/${item}`} style={{ color: "coral" }}>
+                {item}
+              </Link>
             </li>
           ))}
         </ul>
@@ -72,7 +90,7 @@ export default class searchbar extends React.Component {
     return (
       <MDBRow>
         <MDBCol md="14">
-          <form className="form-inline">
+          <form className="form-inline" onSubmit={this.handleSubmit}>
             <MDBBtn
               style={{
                 height: "4rem",
@@ -80,13 +98,19 @@ export default class searchbar extends React.Component {
                 boxShadow: "0 1rem 2rem rgba(black, .1)",
                 fontSize: "1.2rem",
               }}
+              id="stockName"
               gradient="blue"
+              type="submit"
               rounded
             >
-              חיפוש
+              <Link to={`/${this.state.value}`} style={{ color: "white" }}>
+                חיפוש
+              </Link>
             </MDBBtn>
+
             <input
               onChange={this.onTextChange}
+              ref={this.myRef}
               className="form-control form-control-sm ml-3"
               style={{
                 borderRadius: "2px",
@@ -97,6 +121,7 @@ export default class searchbar extends React.Component {
                 fontSize: "1.8rem",
                 color: "coral",
                 textAlign: "right",
+                textTransform: "uppercase",
               }}
               type="text"
               placeholder={this.props.searchText}
@@ -109,5 +134,3 @@ export default class searchbar extends React.Component {
     );
   }
 }
-
-// osher

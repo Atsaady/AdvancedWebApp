@@ -72,6 +72,14 @@ const DividerExampleHorizontalTable = ({ stockName }) => {
             <Table.Cell>Industry</Table.Cell>
             <Table.Cell>{stockDetails.Industry}</Table.Cell>
           </Table.Row>
+          <Table.Row>
+            <Table.Cell>Stock Rank</Table.Cell>
+            <Table.Cell>{stockDetails.stockrank}</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>Company Rank</Table.Cell>
+            <Table.Cell>{stockDetails.companyrank}</Table.Cell>
+          </Table.Row>
         </Table.Body>
       </Table>
     </div>
