@@ -18,7 +18,8 @@ const createTerm = async (req) => {
       var term = new termModel({
           title: req.body.title,
           description: req.body.description,
-          urlVideo : req.body.urlVideo
+          urlVideo : req.body.urlVideo,
+          firstLetter: req.body.title.charAt(0)
       });
       term.save(function (err, example) {
         if (err) console.log(err);
@@ -95,7 +96,6 @@ const getAllTerms  = async () => {
 
 
 
-
 module.exports = {
   getAllTerms,
   getTermByName,
@@ -103,5 +103,5 @@ module.exports = {
   createTerm,
   deleteTerm,
   deleteTermsByLetter,
-  updateTerm
+  updateTerm,
 };
