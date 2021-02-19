@@ -12,6 +12,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatIconModule} from "@angular/material/icon";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     MatExpansionModule,
     MatIconModule,
     MatFormFieldModule,
+    MatButtonModule,
   ],
 })
 export class DefaultModule {}
