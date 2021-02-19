@@ -4,8 +4,6 @@ import { Container, Jumbotron, Col, Row,Card } from "react-bootstrap";
 import { Component } from "react";
 import axios from "axios"
 
-import TermPage from "../Dictionary/TermPage"
-
 
 class OneLetterDic extends Component {
   constructor(props) {
