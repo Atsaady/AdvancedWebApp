@@ -6,8 +6,8 @@ const router = express.Router();
 const termController = require("../controllers/tremController");
 
 //GET
-router.get("/terms/:termName", termController.getTermByName);
-router.get("/terms/:termNameByLetter", termController.getTermsByFirstLetter); //Need to change to first letter
+router.get("/termbyname/:termName", termController.getTermByName);
+router.get("/termsbyletter/:termNameByLetter", termController.getTermsByFirstLetter); //Need to change to first letter
 router.get("/terms", termController.getAllTerms);
 router.get("/import", termController.scrape);
 
