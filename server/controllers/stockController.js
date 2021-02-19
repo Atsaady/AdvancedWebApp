@@ -29,6 +29,15 @@ exports.createStock = async (req, res) => {
   }
 };
 
+exports.deleteStock = async (req, res) => {
+  try {
+    var stock = StockService.createStock(req);
+    res.send(stock);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
+
 // Get all Comments of Specific Stock
 exports.getStockComments = async (req, res) => {
   var comments = await StockService.getStockComments(req);
@@ -57,6 +66,12 @@ exports.getStockDataByName = async (req, res) => {
   var stockData = await StockService.getStockDataByName(req);
   res.send(stockData);
 };
+
+exports.getStockRankById= async (req, res) => {
+  var stockRank = await StockService.getStockRankById(req);
+  res.send(stockRank);
+};
+
 
 // Getting Specific Stock Rates From API - NOT REAL TIME RATES
 exports.getTodayStockRateByName = async (req, res) => {

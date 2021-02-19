@@ -1,1 +1,40 @@
-<p>stocks works!</p>
+<!--<mat-selection-list>-->
+<!--    <mat-list-option *ngFor="let stock of stocks">-->
+<!--      {{stock["name"]}}-->
+<!--    </mat-list-option>-->
+<!--  </mat-selection-list>-->
+
+<mat-accordion>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false"
+                       *ngFor="let stock of stocks">
+    <mat-expansion-panel-header >
+      <mat-panel-title >
+        {{stock["name"]}}
+      </mat-panel-title>
+
+    </mat-expansion-panel-header>
+
+    <div style="margin-bottom: 6px;">
+      <mat-label style="margin-right: 5px;">Stock Rank:</mat-label>
+      <mat-label>{{stock["stockrank"]}}</mat-label>
+    </div>
+    <div style="margin-bottom: 6px;">
+      <mat-label style="margin-right: 5px;">Company Rank:</mat-label>
+      <mat-label>{{stock["companyrank"]}}</mat-label>
+    </div>
+    <div>
+      <mat-label style="margin-right: 5px; margin-bottom: 6px;">Comments:</mat-label>
+      <div style="margin-left: 75px; ">
+        <mat-label *ngFor="let comment of stock.commentsData"><p>{{comment["comment"]}}</p></mat-label>
+      </div>
+    </div>
+      <div class="example-label">Actions:</div>
+      <div class="example-button-row">
+        <button mat-flat-button color="primary" style="margin-right: 5px;">Edit</button>
+        <button mat-flat-button color="warn">ERASE ALL DATA</button>
+      </div>
+
+  </mat-expansion-panel>
+
+</mat-accordion>
