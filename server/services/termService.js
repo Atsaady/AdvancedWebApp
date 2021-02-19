@@ -9,16 +9,15 @@
 */
 const termModel = require("../models/termSchema");
 
-
 const createTerm = async (req) => {
   termModel.findOne({ title: req.body.title }, function (err, term) {
     if (err) console.log(err);
     if (term) console.log("This term already been created");
     else {
       var term = new termModel({
-          title: req.body.title,
-          description: req.body.description,
-          urlVideo : req.body.urlVideo
+        title: req.body.title,
+        description: req.body.description,
+        urlVideo: req.body.urlVideo,
       });
       term.save(function (err, example) {
         if (err) console.log(err);
@@ -31,70 +30,66 @@ const createTerm = async (req) => {
 
 const updateTerm = async (req) => {
   var query = req.body.title;
-  var update=req.body;
-  termModel.findOneAndUpdate({title:query},update , {new: true}, (err, doc) => {
-    if (err) {
+  var update = req.body;
+  termModel.findOneAndUpdate(
+    { title: query },
+    update,
+    { new: true },
+    (err, doc) => {
+      if (err) {
         console.log("Something wrong when updating data!");
+      }
+
+      console.log("Term updated");
     }
-
-    console.log("Term updated");
-});
+  );
 };
-
 
 const deleteTerm = async (req) => {
   var query = req.body.title;
-  termModel.findOneAndDelete({title:query}, (err, doc) => {
+  termModel.findOneAndDelete({ title: query }, (err, doc) => {
     if (err) {
-        console.log("Something wrong when deleting data!"); 
+      console.log("Something wrong when deleting data!");
     }
 
     console.log("Term deleted");
-});
+  });
 };
-
 
 const deleteTermsByLetter = async (req) => {
   var query = req.body.firstLetter;
-  termModel.deleteMany({firstLetter:query},(err,doc) => {
+  termModel.deleteMany({ firstLetter: query }, (err, doc) => {
     if (err) {
-        console.log("Something wrong when deleting data!"); 
+      console.log("Something wrong when deleting data!");
     }
     console.log("Terms deleted by letter");
-});
+  });
 };
 
-const getTermByName  = async (req) => {
+const getTermByName = async (req) => {
   var query = req.body.title;
-  const term= await termModel.findOne({title:query},(err,doc) => {
+  const term = await termModel.findOne({ title: query }, (err, doc) => {
     if (err) {
-        console.log("Something wrong when getting data!"); 
+      console.log("Something wrong when getting data!");
     }
-});
-return term;
+  });
+  return term;
 };
 
-const getTermsByFirstLetter  = async (req) => {
+const getTermsByFirstLetter = async (req) => {
   var query = req.body.firstLetter;
-  const term= await termModel.findOne({firstLetter:query},(err,doc) => {
+  const term = await termModel.findOne({ firstLetter: query }, (err, doc) => {
     if (err) {
-        console.log("Something wrong when deleting data!"); 
+      console.log("Something wrong when deleting data!");
     }
-    
-});
-return term;
+  });
+  return term;
 };
 
-
-const getAllTerms  = async () => {
+const getAllTerms = async () => {
   const terms = await termModel.find({});
   return terms;
 };
-
-
-
-
-
 
 module.exports = {
   getAllTerms,
@@ -103,5 +98,5 @@ module.exports = {
   createTerm,
   deleteTerm,
   deleteTermsByLetter,
-  updateTerm
+  updateTerm,
 };
