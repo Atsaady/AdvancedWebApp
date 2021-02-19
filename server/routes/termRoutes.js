@@ -6,8 +6,8 @@ const router = express.Router();
 const termController = require("../controllers/tremController");
 
 //GET
-router.get("/termbyname/:termName", termController.getTermByName);
-router.get("/termsbyletter/:termNameByLetter", termController.getTermsByFirstLetter); //Need to change to first letter
+router.get("/terms/:termName", termController.getTermByName); //Not necessarily needed
+router.get("/terms/:termNameByLetter", termController.getTermsByFirstLetter); //Not necessarily needed
 router.get("/terms", termController.getAllTerms);
 router.get("/import", termController.scrape);
 
@@ -18,8 +18,7 @@ router.post("/terms", termController.createTerm);
 router.put("/terms/:termName", termController.updateTerm);
 
 //DELETE
-router.delete("/terms/:termName",termController.deleteTerm);
-router.delete("/terms/:termNameByLetter",termController.deleteTermsByLetter);
+router.delete("/terms/:termName", termController.deleteTerm);
+router.delete("/terms/:termNameByLetter", termController.deleteTermsByLetter);
 
-
-module.exports =router;
+module.exports = router;

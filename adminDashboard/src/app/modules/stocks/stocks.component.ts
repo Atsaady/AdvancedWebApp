@@ -9,6 +9,7 @@ import {Stock} from '../../shared/models/stock.model';
   styleUrls: ['./stocks.component.scss'],
 })
 export class StocksComponent implements OnInit {
+  constructor() {}
 
   panelOpenState = false;
 
@@ -50,4 +51,5 @@ export class StocksComponent implements OnInit {
       console.log(this.stocks);
     });
   }
+  ngOnInit(): void {}
 }
