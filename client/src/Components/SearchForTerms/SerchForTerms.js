@@ -7,7 +7,7 @@ import "mdbreact/dist/css/mdb.css";
 import "font-awesome/css/font-awesome.min.css";
 
 
-export default class searchbar extends React.Component {
+export default class SearchForTerms extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -46,7 +46,6 @@ export default class searchbar extends React.Component {
     if (suggestions.length === 0) {
       return null;
     }
-
     return (
       <div
         style={{
@@ -78,9 +77,9 @@ export default class searchbar extends React.Component {
                 textTransform: "uppercase",
               }}
             >
-              <a style={{ color: "coral" }}>
+              <Link to={`search/${item}`} style={{ color: "coral" }}>
                 {item}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
@@ -104,7 +103,7 @@ export default class searchbar extends React.Component {
               type="submit"
               rounded
             >
-              <Link  style={{ color: "white" }}>
+              <Link to={`/${this.state.value}`} style={{ color: "white" }}>
                 חיפוש
               </Link>
             </MDBBtn>
@@ -125,7 +124,7 @@ export default class searchbar extends React.Component {
                 textTransform: "uppercase",
               }}
               type="text"
-              placeholder=" חפש מונח &#xF002; "
+              placeholder=".. חפש נייר ערך &#xF002;"
               aria-label="Search"
             />
           </form>

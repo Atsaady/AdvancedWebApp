@@ -7,6 +7,7 @@ import StockPage from "../StockPage/StockPage";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import Dictionary from "../Dictionary/dictionary";
 import Calculator from "../Calculator/calculator";
+import TermPage from "../Dictionary/TermPage";
 
 export default function App() {
   return (
@@ -25,6 +26,9 @@ export default function App() {
           </Route>
           <Route exact path="/:stock">
             <StockPage />
+          </Route>
+          <Route exact path="/search/:term">
+            <TermPage/>
           </Route>
         </Switch>
         <Footer marginTop={"47%"} />
