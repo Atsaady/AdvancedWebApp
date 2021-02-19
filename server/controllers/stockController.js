@@ -31,7 +31,7 @@ exports.createStock = async (req, res) => {
 
 exports.deleteStock = async (req, res) => {
   try {
-    var stock = StockService.createStock(req);
+    var stock = StockService.deleteStock(req);
     res.send(stock);
   } catch (err) {
     res.status(500).send(err);
