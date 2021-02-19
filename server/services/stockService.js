@@ -37,13 +37,26 @@ const createStock = async (req) => {
   });
 };
 
+const deleteStock = async (req) => {
+  var query = req.params.stockName;
+  const stock = await stockModel.findOne({ name: query });
+  var comments = stock.comments;
+  var rank = stock.rank;
+  for (const comment in comments) {
+    await commentModel.deleteOne({ _id: comments[comment] });
+  }
+  await rankModel.deleteOne({ _id: rank[0] });
+  await stockModel.deleteOne({ name: query });
+  console.log("STOCK DELETED")
+};
+
 const getStockComments = async (req) => {
   const stockname = req.params.stockName;
   var comments = [];
   var data = [];
   const stock = await stockModel.findOne({ name: stockname });
-  comments = stock.comments;
-  if(comments[0]!==null){
+  if(stock.comments){
+    comments = stock.comments;
     for (const comment in comments) {
       const comm = await commentModel.findOne({ _id: comments[comment] });
       data.push(comm);
@@ -64,12 +77,18 @@ const addCommentToStock = async (req) => {
 };
 
 const getStockDataByName = async (req) => {
-  let stock = await stockModel.findOne({ name: req.params.stockName });
+  var stock = await stockModel.findOne({ name: req.params.stockName });
+  if(!stock){
+    stock = new stockModel({
+      name: req.params.stockName
+    })
+    stock = await stock.save();
+  }
   var fetchData = await fetch(
     `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${req.params.stockName}&apikey=${yourApiKey}`
   );
   var data = await fetchData.json();
-  if(stock.rank[0]==null){
+  if(stock.rank[0]!==null){
     let rank = new rankModel({stockrank: Math.floor(Math.random() * (10 - 3 + 1)) + 3, 
       companyrank: Math.floor(Math.random() * (10 - 3 + 1)) + 3});
     rank = await rank.save();
@@ -81,6 +100,15 @@ const getStockDataByName = async (req) => {
   data.companyrank = rank.companyrank;
   return data;
 };
+
+const getStockRankById = async (req) => {
+  const id = req.params.id;
+  var rank = [];
+  var data = [];
+  const ra = await rankModel.findOne({ _id: id });
+  data.push(ra);
+  return data;
+  };
 
 const getTodayStockRateByName = async (req) => {
   const stockname = req.params.stockName;
@@ -108,4 +136,6 @@ module.exports = {
   addCommentToStock,
   getStockComments,
   getHistoricalStockRateByName,
+  getStockRankById,
+  deleteStock,
 };
