@@ -9,6 +9,7 @@ const termController = require("../controllers/tremController");
 router.get("/terms/:termName", termController.getTermByName); //Not necessarily needed
 router.get("/terms/:termNameByLetter", termController.getTermsByFirstLetter); //Not necessarily needed
 router.get("/terms", termController.getAllTerms);
+router.get("/import", termController.scrape);
 
 //CREATE
 router.post("/terms", termController.createTerm);

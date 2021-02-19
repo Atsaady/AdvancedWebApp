@@ -15,9 +15,10 @@ const createTerm = async (req) => {
     if (term) console.log("This term already been created");
     else {
       var term = new termModel({
-        title: req.body.title,
-        description: req.body.description,
-        urlVideo: req.body.urlVideo,
+          title: req.body.title,
+          description: req.body.description,
+          urlVideo : req.body.urlVideo,
+          firstLetter: req.body.title.charAt(0)
       });
       term.save(function (err, example) {
         if (err) console.log(err);
@@ -66,31 +67,30 @@ const deleteTermsByLetter = async (req) => {
   });
 };
 
-const getTermByName = async (req) => {
+const getTermByName  = async (req) => {
+  console.log("here")
   var query = req.body.title;
   const term = await termModel.findOne({ title: query }, (err, doc) => {
     if (err) {
       console.log("Something wrong when getting data!");
     }
-  });
-  return term;
+});
+console.log(term);
+return term;
 };
 
-const getTermsByFirstLetter = async (req) => {
-  var query = req.body.firstLetter;
-  const term = await termModel.findOne({ firstLetter: query }, (err, doc) => {
-    if (err) {
-      console.log("Something wrong when deleting data!");
-    }
-  });
-  return term;
+const getTermsByFirstLetter  = async (req) => {
+ 
+  const query = req.body.firstLetter;
+  const term= await termModel.find({firstLetter: query});
+console.log(term);
+return term;
 };
 
 const getAllTerms = async () => {
   const terms = await termModel.find({});
   return terms;
 };
-
 module.exports = {
   getAllTerms,
   getTermByName,

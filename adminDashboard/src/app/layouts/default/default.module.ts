@@ -17,6 +17,10 @@ import { TermsService } from 'src/app/modules/terms.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import {MatListModule} from '@angular/material/list';
+import {MatExpansionModule} from "@angular/material/expansion";
+import {MatFormFieldModule} from "@angular/material/form-field";
+
 
 @NgModule({
   declarations: [
@@ -31,6 +35,9 @@ import { MatMenuModule } from '@angular/material/menu';
     SharedModule,
     MatSidenavModule,
     MatDividerModule,
+    MatFormFieldModule,
+    MatExpansionModule,
+    MatListModule,
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
