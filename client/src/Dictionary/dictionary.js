@@ -4,14 +4,24 @@ import { Container, Jumbotron, Col, Row,Card } from "react-bootstrap";
 import SearchPage from "../Components/Searchbar/searchbar";
 import stockslist from "../Components/stocksForSearch";
 import { Component } from "react";
-import AlllTermsDic from "../Dictionary/AllTermsDic"
 import OneLetterDic from "../Dictionary/OneLetterDic"
 
 
+
 class Dictionary extends Component {
-  
+  constructor(props) {
+    super(props);
+    this.state = {
+      letter: "א"
+  }
+  }
+  changeLetter = (event) =>{
+    this.setState({
+      letter:event.target.name
+    });
+  }
   render() {
-    var letters = [,'כל המונחים','א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ז', 'ח', 'ט', 'י', 'כ', 'ל', 'מ', 'נ', 'פ', 'ע', 'ק', 'ר', 'ש', 'ת']
+   
     return (
       <>
         <Jumbotron className="headerbox">
@@ -36,19 +46,37 @@ class Dictionary extends Component {
       
             <ul className="atozbox__ul">
               
-              {letters.map(function (name, index) {
-                return <li className="atozbox__ul__li" key={index} ><a className="atozbox__ul__li__a" >{name}</a></li>
-              })}
+              
+               <li   className="atozbox__ul__li" ><a onClick={this.changeLetter}name="א" className="atozbox__ul__li__a" >א</a></li>
+               <li  className="atozbox__ul__li" ><a onClick={this.changeLetter} name="ב" className="atozbox__ul__li__a" >ב</a></li>
+               <li  className="atozbox__ul__li" ><a onClick={this.changeLetter} name="ג" className="atozbox__ul__li__a" >ג</a></li>
+               <li  className="atozbox__ul__li" ><a onClick={this.changeLetter} name="ד" className="atozbox__ul__li__a" >ד</a></li>
+               <li  className="atozbox__ul__li" ><a onClick={this.changeLetter} name="ה" className="atozbox__ul__li__a" >ה</a></li>
+               <li  className="atozbox__ul__li" ><a onClick={this.changeLetter} name="ו" className="atozbox__ul__li__a" >ו</a></li>
+               <li  className="atozbox__ul__li" ><a onClick={this.changeLetter} name="ז" className="atozbox__ul__li__a" >ז</a></li>
+               <li  className="atozbox__ul__li" ><a onClick={this.changeLetter} name="ח" className="atozbox__ul__li__a" >ח</a></li>
+               <li  className="atozbox__ul__li" ><a onClick={this.changeLetter}  name="ט"className="atozbox__ul__li__a" >ט</a></li>
+               <li  className="atozbox__ul__li" ><a onClick={this.changeLetter} name="י" className="atozbox__ul__li__a" >י</a></li>
+               <li  className="atozbox__ul__li" ><a onClick={this.changeLetter} name="כ" className="atozbox__ul__li__a" >כ</a></li>
+               <li  className="atozbox__ul__li" ><a onClick={this.changeLetter} name="ל" className="atozbox__ul__li__a" >ל</a></li>
+               <li  className="atozbox__ul__li" ><a onClick={this.changeLetter} name="מ" className="atozbox__ul__li__a" >מ</a></li>
+               <li  className="atozbox__ul__li" ><a onClick={this.changeLetter} name="נ" className="atozbox__ul__li__a" >נ</a></li>
+               <li  className="atozbox__ul__li" ><a onClick={this.changeLetter} name="פ" className="atozbox__ul__li__a" >פ</a></li>
+               <li  className="atozbox__ul__li" ><a onClick={this.changeLetter} name="ע" className="atozbox__ul__li__a" >ע</a></li>
+               <li  className="atozbox__ul__li" ><a onClick={this.changeLetter} name="ק" className="atozbox__ul__li__a" >ק</a></li>
+               <li  className="atozbox__ul__li" ><a onClick={this.changeLetter} name="ר" className="atozbox__ul__li__a" >ר</a></li>
+               <li  className="atozbox__ul__li" ><a onClick={this.changeLetter} name="ש" className="atozbox__ul__li__a" >ש</a></li>
+               <li  className="atozbox__ul__li" ><a onClick={this.changeLetter} name="ת" className="atozbox__ul__li__a" >ת</a></li>
             </ul>
       
           </Card>
         </Container>
+       
         <br/>
         <br/>
-        <AlllTermsDic/>
-        <OneLetterDic/>
-
-
+      <OneLetterDic Letter={this.state.letter} />
+    
+            
       </>
     );
   }

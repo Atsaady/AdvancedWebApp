@@ -66,17 +66,19 @@ const deleteTermsByLetter = async (req) => {
 };
 
 const getTermByName  = async (req) => {
+  console.log("here")
   var query = req.body.title;
   const term= await termModel.findOne({title:query},(err,doc) => {
     if (err) {
         console.log("Something wrong when getting data!"); 
     }
 });
+console.log(term);
 return term;
 };
 
 const getTermsByFirstLetter  = async (req) => {
-  console.log("here");
+ 
   const query = req.body.firstLetter;
   const term= await termModel.find({firstLetter: query});
 console.log(term);
