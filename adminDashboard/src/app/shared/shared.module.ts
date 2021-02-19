@@ -11,6 +11,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, SidebarComponent],

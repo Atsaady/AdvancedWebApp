@@ -43,7 +43,7 @@ const getStockComments = async (req) => {
   var data = [];
   const stock = await stockModel.findOne({ name: stockname });
   comments = stock.comments;
-  if(comments[0]!==null){
+  if (comments[0] !== null) {
     for (const comment in comments) {
       const comm = await commentModel.findOne({ _id: comments[comment] });
       data.push(comm);
@@ -69,9 +69,11 @@ const getStockDataByName = async (req) => {
     `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${req.params.stockName}&apikey=${yourApiKey}`
   );
   var data = await fetchData.json();
-  if(stock.rank[0]==null){
-    let rank = new rankModel({stockrank: Math.floor(Math.random() * (10 - 3 + 1)) + 3, 
-      companyrank: Math.floor(Math.random() * (10 - 3 + 1)) + 3});
+  if (stock.rank[0] == null) {
+    let rank = new rankModel({
+      stockrank: Math.floor(Math.random() * (10 - 3 + 1)) + 3,
+      companyrank: Math.floor(Math.random() * (10 - 3 + 1)) + 3,
+    });
     rank = await rank.save();
     stock.rank.push(rank._id);
     stock = await stock.save();
