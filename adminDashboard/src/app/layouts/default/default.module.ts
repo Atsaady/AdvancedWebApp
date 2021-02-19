@@ -8,6 +8,10 @@ import { TermsComponent } from 'src/app/modules/terms/terms.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+import {MatExpansionModule} from "@angular/material/expansion";
+import {MatIconModule} from "@angular/material/icon";
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 @NgModule({
   declarations: [
@@ -22,6 +26,10 @@ import { MatDividerModule } from '@angular/material/divider';
     SharedModule,
     MatSidenavModule,
     MatDividerModule,
+    MatListModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatFormFieldModule,
   ],
 })
 export class DefaultModule {}

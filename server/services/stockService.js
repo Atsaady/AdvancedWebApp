@@ -37,6 +37,18 @@ const createStock = async (req) => {
   });
 };
 
+const deleteStock = async (req) => {
+  var query = req.params.stockName;
+  const stock = await stockModel.findOne({ name: query });
+  var comments = stock.comments;
+  var rank = stock.rank;
+  for (const comment in comments) {
+    await commentModel.deleteOne({ _id: comments[comment] });
+  }
+  await rankModel.deleteOne({ _id: rank[0] });
+  await stockModel.deleteOne({ name: query });
+};
+
 const getStockComments = async (req) => {
   const stockname = req.params.stockName;
   var comments = [];
@@ -82,6 +94,15 @@ const getStockDataByName = async (req) => {
   return data;
 };
 
+const getStockRankById = async (req) => {
+  const id = req.params.id;
+  var rank = [];
+  var data = [];
+  const ra = await rankModel.findOne({ _id: id });
+  data.push(ra);
+  return data;
+  };
+
 const getTodayStockRateByName = async (req) => {
   const stockname = req.params.stockName;
   var fetchData = await fetch(
@@ -108,4 +129,6 @@ module.exports = {
   addCommentToStock,
   getStockComments,
   getHistoricalStockRateByName,
+  getStockRankById,
+  deleteStock,
 };

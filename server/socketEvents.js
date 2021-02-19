@@ -4,7 +4,7 @@ const stockModel = require("../server/models/stockSchema");
 module.exports = function (server) {
   const io = require("socket.io")(server, {
     cors: {
-      origins: ["http://localhost:3000"],
+      origins: ["http://localhost:3000", "http://localhost:4200"],
       methods: ["GET", "POST"],
       credentials: false,
     },
