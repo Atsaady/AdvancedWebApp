@@ -1,8 +1,8 @@
 import React from "react";
 import "./dictionary.scss"
 import { Container, Jumbotron, Col, Row,Card } from "react-bootstrap";
-import SearchPage from "../Components/Searchbar/searchbar";
-import stockslist from "../Components/stocksForSearch";
+import SearchForTerms from "../Components/SearchForTerms/SerchForTerms";
+import termList from "../termsForSearch";
 import { Component } from "react";
 import OneLetterDic from "../Dictionary/OneLetterDic"
 
@@ -37,7 +37,7 @@ class Dictionary extends Component {
           </Row>
           <Row>
             <div className="searchbox">
-              <SearchPage items={stockslist} searchText={" .. חפש מונח כלכלי  &#xF002"} />
+              <SearchForTerms items={termList}/>
             </div>
           </Row>
         </Jumbotron>
