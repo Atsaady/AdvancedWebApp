@@ -32,7 +32,7 @@
       <div class="example-label">Actions:</div>
       <div class="example-button-row">
         <button mat-flat-button color="primary" style="margin-right: 5px;">Edit</button>
-        <button mat-flat-button color="warn">ERASE ALL DATA</button>
+        <button mat-flat-button color="warn" (click)="deleteStock(stock.name)">ERASE ALL DATA</button>
       </div>
 
   </mat-expansion-panel>

@@ -17,8 +17,8 @@ export class StockService {
     return this.http.post('', {});
   }
 
-  deleteStock(stock): Observable<any>{
-    return this.http.get('http://localhost:5000/stocks');
+  deleteStock(stockName: string): Observable<any>{
+    return this.http.delete(`http://localhost:5000/stocks/${stockName}`);
   }
 
   getStockComments(stock): Observable<any>{

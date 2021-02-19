@@ -47,6 +47,7 @@ const deleteStock = async (req) => {
   }
   await rankModel.deleteOne({ _id: rank[0] });
   await stockModel.deleteOne({ name: query });
+  console.log("STOCK DELETED")
 };
 
 const getStockComments = async (req) => {
@@ -54,8 +55,8 @@ const getStockComments = async (req) => {
   var comments = [];
   var data = [];
   const stock = await stockModel.findOne({ name: stockname });
-  comments = stock.comments;
-  if(comments[0]!==null){
+  if(stock.comments){
+    comments = stock.comments;
     for (const comment in comments) {
       const comm = await commentModel.findOne({ _id: comments[comment] });
       data.push(comm);
@@ -76,12 +77,18 @@ const addCommentToStock = async (req) => {
 };
 
 const getStockDataByName = async (req) => {
-  let stock = await stockModel.findOne({ name: req.params.stockName });
+  var stock = await stockModel.findOne({ name: req.params.stockName });
+  if(!stock){
+    stock = new stockModel({
+      name: req.params.stockName
+    })
+    stock = await stock.save();
+  }
   var fetchData = await fetch(
     `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${req.params.stockName}&apikey=${yourApiKey}`
   );
   var data = await fetchData.json();
-  if(stock.rank[0]==null){
+  if(stock.rank[0]!==null){
     let rank = new rankModel({stockrank: Math.floor(Math.random() * (10 - 3 + 1)) + 3, 
       companyrank: Math.floor(Math.random() * (10 - 3 + 1)) + 3});
     rank = await rank.save();
