@@ -91,6 +91,28 @@ const getAllTerms  = async () => {
   return terms;
 };
 
+const groupBy = async (res) => {
+  const data = await termModel.aggregate([{
+    $group : {
+      _id : "$firstLetter",
+      total: {$sum : 1}
+    }
+
+  }]); 
+   console.log(data);
+  return data;
+}
+
+
+/*const mapReduce = async (res) => {
+console.log("hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
+ function map () {emit(termModel.title,termModel.firstLetter)};
+ function reduce(key,values) {return Array.sum(values)};
+ const data  = termModel.mapReduce(map,reduce,{out:{inline:1}});
+ console.log("hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
+console.log(data)
+  return data;
+}*/
 
 
 
@@ -103,4 +125,6 @@ module.exports = {
   deleteTerm,
   deleteTermsByLetter,
   updateTerm,
+  groupBy,
+  /*mapReduce*/
 };
