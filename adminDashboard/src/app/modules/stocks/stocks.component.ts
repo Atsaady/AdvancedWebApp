@@ -1,4 +1,3 @@
-
 import {Component, OnInit, Inject} from '@angular/core';
 import {StockService} from '../../shared/services/stock.service';
 import {Stock} from '../../shared/models/stock.model';
@@ -50,7 +49,6 @@ export class StocksComponent implements OnInit {
       console.log(this.stocks);
     });
   }
-
   // tslint:disable-next-line:typedef
   editStock(stock) {
     const dialogConfig = new MatDialogConfig();
