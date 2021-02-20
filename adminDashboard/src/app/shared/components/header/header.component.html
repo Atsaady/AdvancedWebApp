@@ -9,18 +9,15 @@
     <div fxFlex fxlayout="row" fxLayoutAlign="flex-end">
       <ul fxLayout="row" fxLayoutGap="20px">
         <li>
-          <button mat-icon-button>
-            <mat-icon>settings</mat-icon>
-          </button>
-        </li>
-        <li>
           <button mat-button [matMenuTriggerFor]="menu">
             <mat-icon>person_outline</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
             <button mat-menu-item>
-              <mat-icon>exit_to_app</mat-icon>
-              Sign Out
+              <a href="http://localhost:3000/">
+                <mat-icon>exit_to_app</mat-icon>
+                Exit
+              </a>
             </button>
           </mat-menu>
         </li>
@@ -28,8 +25,3 @@
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
-
-<!-- <span>Admin Dashboard</span>
-        <span class="example-spacer"></span>
-        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">Favorite</mat-icon>
-        <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon">Delete</mat-icon> -->
