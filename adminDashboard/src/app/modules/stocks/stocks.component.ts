@@ -5,7 +5,6 @@ import {Stock} from '../../shared/models/stock.model';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {EditcardComponent} from '../../editcard/editcard.component';
 
-
 @Component({
   selector: 'app-stocks',
   templateUrl: './stocks.component.html',
@@ -29,7 +28,6 @@ export class StocksComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-
   fetchStocks(): void {
     this.stocksService.getAllStocks().subscribe((stocks) => {
       // tslint:disable-next-line:prefer-for-of
