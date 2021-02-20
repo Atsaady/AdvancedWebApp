@@ -16,10 +16,12 @@ import { EditcardComponent } from './editcard/editcard.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
+import { EditcardtermComponent } from './editcardterm/editcardterm.component';
+import { AddtermComponent } from './addterm/addterm.component';
 
 
 @NgModule({
-  declarations: [AppComponent, EditcardComponent],
+  declarations: [AppComponent, EditcardComponent, EditcardtermComponent, AddtermComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

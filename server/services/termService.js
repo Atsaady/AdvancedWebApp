@@ -7,18 +7,19 @@
     - Not responsible for making decisions about the "bigger" picture orchestrating the different service calls
     - Returns the completed work a response to the manager (Controller)
 */
+const { emit } = require("../models/termSchema");
 const termModel = require("../models/termSchema");
 
 const createTerm = async (req) => {
-  termModel.findOne({ title: req.body.title }, function (err, term) {
+  console.log(req.body);
+  termModel.findOne({ title: req.body.termName }, function (err, term) {
     if (err) console.log(err);
     if (term) console.log("This term already been created");
     else {
       var term = new termModel({
-          title: req.body.title,
-          description: req.body.description,
-          urlVideo : req.body.urlVideo,
-          firstLetter: req.body.title.charAt(0)
+          title: req.body.termName,
+          description: req.body.des,
+          firstLetter: req.body.fl
       });
       term.save(function (err, example) {
         if (err) console.log(err);
@@ -30,29 +31,25 @@ const createTerm = async (req) => {
 };
 
 const updateTerm = async (req) => {
-  var query = req.body.title;
-  var update = req.body;
-  termModel.findOneAndUpdate(
-    { title: query },
-    update,
-    { new: true },
-    (err, doc) => {
-      if (err) {
-        console.log("Something wrong when updating data!");
-      }
-
-      console.log("Term updated");
-    }
-  );
+  console.log(req.body);
+  var termToChange = req.body.term;
+  var name = req.body.termName;
+  var des = req.body.des;
+  var fl = req.body.fl;
+  termModel.updateOne({ title: termToChange}, {title: name, description: des, firstLetter: fl}, function (err, term) {
+    if (err) console.log(err);
+    console.log("TERM UPDATED");
+    return term;
+  });
 };
 
 const deleteTerm = async (req) => {
-  var query = req.body.title;
-  termModel.findOneAndDelete({ title: query }, (err, doc) => {
+  var query = req.params.termName;
+  console.log(query);
+  termModel.deleteOne({ title: query }, (err, doc) => {
     if (err) {
       console.log("Something wrong when deleting data!");
     }
-
     console.log("Term deleted");
   });
 };
@@ -92,7 +89,7 @@ const getAllTerms = async () => {
   return terms;
 };
 
-const groupBy = async (res) => {
+const groupBy = async () => {
   const data = await termModel.aggregate([{
     $group : {
       _id : "$firstLetter",
@@ -100,21 +97,37 @@ const groupBy = async (res) => {
     }
 
   }]); 
-   console.log(data);
   return data;
 }
 
 
-/*const mapReduce = async (res) => {
-console.log("hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
- function map () {emit(termModel.title,termModel.firstLetter)};
- function reduce(key,values) {return Array.sum(values)};
- const data  = termModel.mapReduce(map,reduce,{out:{inline:1}});
- console.log("hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
-console.log(data)
-  return data;
-}*/
+const mapReduce = async () => {
 
+  console.log("hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
+
+  var data = termModel.mapReduce(
+    function(){emit(this.title, 3);},
+    function(key, value) {
+      var result = {};
+      result.titles = value;
+      console.log(result)
+      return result;
+    },
+    {
+      out: {inline: 1}
+    }
+  )
+  // console.log(data)
+  // return data;
+
+// console.log("hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
+//  function map () {emit(termModel.title, termModel.firstLetter)};
+//  function reduce(key,values) {return Array.sum(values)};
+//  const data  = termModel.mapReduce(map,reduce,{out:{inline:1}});
+//  console.log("hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
+// console.log(data)
+//   return data;
+}
 
 
 
@@ -127,5 +140,5 @@ module.exports = {
   deleteTermsByLetter,
   updateTerm,
   groupBy,
-  /*mapReduce*/
+  mapReduce
 };

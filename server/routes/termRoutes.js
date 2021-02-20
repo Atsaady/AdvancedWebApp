@@ -11,12 +11,12 @@ router.get("/terms/:termNameByLetter", termController.getTermsByFirstLetter); //
 router.get("/terms", termController.getAllTerms);
 router.get("/import", termController.scrape);
 router.get("/groupby", termController.groupBy);
-/*router.get("/map", termController.mapReduce);*/
+router.get("/map", termController.mapReduce);
 //CREATE
 router.post("/terms", termController.createTerm);
 
 //UPDATE
-router.put("/terms/:termName", termController.updateTerm);
+router.put("/terms/update", termController.updateTerm);
 
 //DELETE
 router.delete("/terms/:termName", termController.deleteTerm);
