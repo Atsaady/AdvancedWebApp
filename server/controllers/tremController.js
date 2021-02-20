@@ -91,8 +91,19 @@ exports.deleteTermsByLetter = async (req, res) => {
     }
 };
 
+//import data from another page
 exports.scrape = async () => {
   await scrapeService.scrape();  
 };
 
+
+exports.groupBy = async (res) => { 
+ const data = await TermService.groupBy(res);
+ res.send(data);
+};
+
+/*exports.mapReduce = async (res) => { 
+  const data = await TermService.mapReduce();
+  res.send(data);
+ };*/
 

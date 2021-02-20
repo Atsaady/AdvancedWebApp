@@ -48,9 +48,10 @@ const displayTermByName = (allTerms) => {
    
           <Container>
               <Jumbotron>
-                  <h1 style={{ textAlign: 'center' }}>{title} </h1>
-                 <h1 style={{ textAlign: 'right' }} >תיאור</h1>
-                 <h3 style={{ textAlign: 'right' }} >{description}</h3>
+                  <h1 style={{ textAlign: 'center' , color:"darkblue"}}>{title} </h1>
+                  <hr/>
+                 <h1 style={{ textAlign: 'right',color:"darkblue" }} >תיאור</h1>
+                 <h3 style={{ textAlign: 'right' ,color:"darkblue"}} >{description}</h3>
 
                  <Link to="/dic">back</Link>
                  

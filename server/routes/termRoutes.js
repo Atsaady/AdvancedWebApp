@@ -10,7 +10,8 @@ router.get("/terms/:termName", termController.getTermByName); //Not necessarily 
 router.get("/terms/:termNameByLetter", termController.getTermsByFirstLetter); //Not necessarily needed
 router.get("/terms", termController.getAllTerms);
 router.get("/import", termController.scrape);
-
+router.get("/groupby", termController.groupBy);
+/*router.get("/map", termController.mapReduce);*/
 //CREATE
 router.post("/terms", termController.createTerm);
 
