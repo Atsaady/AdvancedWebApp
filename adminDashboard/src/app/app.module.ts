@@ -10,11 +10,16 @@ import { DefaultModule } from './layouts/default/default.module';
 import { HttpClientModule } from '@angular/common/http';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatButtonModule} from '@angular/material/button';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatDialogModule} from '@angular/material/dialog';
+import { EditcardComponent } from './editcard/editcard.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, EditcardComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -25,9 +30,15 @@ import {MatButtonModule} from '@angular/material/button';
     HttpClientModule,
     MatExpansionModule,
     MatButtonModule,
+    NgbModule,
+    MatDialogModule,
+    MatToolbarModule,
+    ReactiveFormsModule,
+    MatIconModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent],
+  entryComponents:[EditcardComponent]
 })
 export class AppModule {}

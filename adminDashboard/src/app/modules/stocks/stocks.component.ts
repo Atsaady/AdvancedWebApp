@@ -1,7 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, Inject} from '@angular/core';
 import {StockService} from '../../shared/services/stock.service';
 import {Stock} from '../../shared/models/stock.model';
-
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {EditcardComponent} from '../../editcard/editcard.component';
 
 @Component({
   selector: 'app-stocks',
@@ -15,9 +16,8 @@ export class StocksComponent implements OnInit {
   // tslint:disable-next-line:ban-types
   stocks: Stock[] = [];
 
-  constructor(private stocksService: StockService) {
+  constructor(private stocksService: StockService, private dialog: MatDialog) {
     this.fetchStocks();
-
   }
 
   // tslint:disable-next-line:typedef
@@ -50,4 +50,16 @@ export class StocksComponent implements OnInit {
       console.log(this.stocks);
     });
   }
+
+  // tslint:disable-next-line:typedef
+  editStock(stock) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {stockname: stock};
+    this.dialog.open(EditcardComponent, dialogConfig);
+  }
 }
+
+
+
