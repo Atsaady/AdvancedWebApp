@@ -19,8 +19,9 @@ router.get(
 );
 
 router.post("/stocks", StockController.createStock);
+router.post("/stocks/:stockName/comment", StockController.addCommentToStock);
 
-router.put("/stocks/:stockName/comment", StockController.addCommentToStock);
+router.put("/stocks/update", StockController.updateStock);
 
 router.delete("/stocks/:stockName", StockController.deleteStock);
 

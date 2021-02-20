@@ -3,7 +3,7 @@ import video from "../Videos/Background.mp4";
 import SearchPage from "../Components/Searchbar/searchbar";
 import Stockbar from "../Components/Stockbar/Stockbar";
 import img from "../Videos/logoinvestock.png";
-import stockslist from "../Components/stocksForSearch";
+import stockslist from "../stocksForSearch";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function Homepage() {
@@ -27,7 +27,7 @@ function Homepage() {
               <h2 className="searchbox__header">
                 Inve<span>S</span>tock
               </h2>
-              <SearchPage items={stockslist} searchText={" .. חפש נייר ערך  &#xF002"}/>
+              <SearchPage items={stockslist} />
             </div>
           </header>
         </div>
