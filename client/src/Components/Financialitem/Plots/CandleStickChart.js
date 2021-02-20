@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import Plot from 'react-plotly.js';
 
 const CandleStickChart = ({financialItem,financialItemName}) => {
-    console.log(financialItem)
     return (
         <Fragment>
             <Plot

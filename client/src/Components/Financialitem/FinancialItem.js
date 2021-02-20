@@ -35,7 +35,6 @@ const FinancialItem = ({
   };
 
   const displayTheRightPlot = () => {
-    console.log(financialItem);
     switch (typeOfChart) {
       case "line":
         return (

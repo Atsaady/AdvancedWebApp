@@ -18,7 +18,6 @@ export const getFinancialItem = (symbol) => async (dispatch) => {
         return response.json();
       })
       .then(function (data) {
-        console.log(data);
 
         for (let key in data["Time Series (Daily)"]) {
           financialChartXValuesFunction.push(key);

@@ -11,7 +11,6 @@ const { emit } = require("../models/termSchema");
 const termModel = require("../models/termSchema");
 
 const createTerm = async (req) => {
-  console.log(req.body);
   termModel.findOne({ title: req.body.termName }, function (err, term) {
     if (err) console.log(err);
     if (term) console.log("This term already been created");
@@ -31,7 +30,6 @@ const createTerm = async (req) => {
 };
 
 const updateTerm = async (req) => {
-  console.log(req.body);
   var termToChange = req.body.term;
   var name = req.body.termName;
   var des = req.body.des;
@@ -45,7 +43,6 @@ const updateTerm = async (req) => {
 
 const deleteTerm = async (req) => {
   var query = req.params.termName;
-  console.log(query);
   termModel.deleteOne({ title: query }, (err, doc) => {
     if (err) {
       console.log("Something wrong when deleting data!");
@@ -65,14 +62,12 @@ const deleteTermsByLetter = async (req) => {
 };
 
 const getTermByName  = async (req) => {
-  console.log("here")
   var query = req.body.title;
   const term = await termModel.findOne({ title: query }, (err, doc) => {
     if (err) {
       console.log("Something wrong when getting data!");
     }
 });
-console.log(term);
 return term;
 };
 
@@ -80,7 +75,6 @@ const getTermsByFirstLetter  = async (req) => {
  
   const query = req.body.firstLetter;
   const term= await termModel.find({firstLetter: query});
-console.log(term);
 return term;
 };
 
@@ -105,18 +99,22 @@ const mapReduce = async () => {
 
   console.log("hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
 
-  var data = termModel.mapReduce(
-    function(){emit(this.title, 3);},
-    function(key, value) {
-      var result = {};
-      result.titles = value;
-      console.log(result)
-      return result;
-    },
-    {
-      out: {inline: 1}
-    }
-  )
+var map=function(){ emit(this.title,this.firstLetter)};
+var reduce=function(title,fl){ return fl+"aa";};
+await termModel.mapReduce(map,reduce,{out :"resultCollection1"});
+
+  // var data = termModel.mapReduce(
+  //   function(){emit(this.title, 3);},
+  //   function(key, value) {
+  //     var result = {};
+  //     result.titles = value;
+  //     console.log(result)
+  //     return result;
+  //   },
+  //   {
+  //     out: {inline: 1}
+  //   }
+  // )
   // console.log(data)
   // return data;
 
@@ -128,8 +126,6 @@ const mapReduce = async () => {
 // console.log(data)
 //   return data;
 }
-
-
 
 module.exports = {
   getAllTerms,

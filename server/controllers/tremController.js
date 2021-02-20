@@ -43,7 +43,6 @@ exports.getAllTerms = async (req, res) => {
 
  // create new term
  exports.createTerm = async (req, res) => {
-   console.log(req.body);
     var term = await TermService.createTerm(req);
     try {
       res.send(term);
@@ -105,7 +104,6 @@ exports.groupBy = async (req, res) => {
 
 exports.mapReduce = async (req, res) => { 
   const data = await TermService.mapReduce();
-  console.log(data);
   res.send(data);
  };
 
