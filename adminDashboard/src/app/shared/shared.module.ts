@@ -12,10 +12,9 @@ import { MatListModule } from '@angular/material/list';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import {MatDialogModule} from '@angular/material/dialog';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatTableModule } from '@angular/material/table';
-
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, SidebarComponent],
@@ -32,6 +31,7 @@ import { MatTableModule } from '@angular/material/table';
     FormsModule,
     NgbModule,
     MatDialogModule,
+    MatTableModule,
   ],
   exports: [HeaderComponent, FooterComponent, SidebarComponent],
 })
