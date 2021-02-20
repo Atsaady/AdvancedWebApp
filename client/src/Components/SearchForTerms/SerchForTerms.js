@@ -5,9 +5,9 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import "font-awesome/css/font-awesome.min.css";
-import "./searchbar.scss";
 
-export default class searchbar extends React.Component {
+
+export default class SearchForTerms extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -77,7 +77,7 @@ export default class searchbar extends React.Component {
                 textTransform: "uppercase",
               }}
             >
-              <Link to={`/${item}`} style={{ color: "coral" }}>
+              <Link to={`search/${item}`} style={{ color: "coral" }}>
                 {item}
               </Link>
             </li>

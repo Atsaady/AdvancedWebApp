@@ -1,8 +1,3 @@
-<!--<mat-selection-list>-->
-<!--    <mat-list-option *ngFor="let stock of stocks">-->
-<!--      {{stock["name"]}}-->
-<!--    </mat-list-option>-->
-<!--  </mat-selection-list>-->
 
 <mat-accordion>
   <mat-expansion-panel (opened)="panelOpenState = true"
@@ -31,10 +26,13 @@
     </div>
       <div class="example-label">Actions:</div>
       <div class="example-button-row">
-        <button mat-flat-button color="primary" style="margin-right: 5px;">Edit</button>
+        <button mat-flat-button color="primary" style="margin-right: 5px;" (click)="editStock(stock.name)">Edit</button>
+
         <button mat-flat-button color="warn" (click)="deleteStock(stock.name)">ERASE ALL DATA</button>
       </div>
 
   </mat-expansion-panel>
 
 </mat-accordion>
+
+

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DefaultComponent } from './default.component';
-import { DashboardComponent } from 'src/app/modules/dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
 import { StocksComponent } from 'src/app/modules/stocks/stocks.component';
 import { TermsComponent } from 'src/app/modules/terms/terms.component';
@@ -21,12 +20,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
-  declarations: [
-    DefaultComponent,
-    DashboardComponent,
-    StocksComponent,
-    TermsComponent,
-  ],
+  declarations: [DefaultComponent, StocksComponent, TermsComponent],
   imports: [
     CommonModule,
     RouterModule,
