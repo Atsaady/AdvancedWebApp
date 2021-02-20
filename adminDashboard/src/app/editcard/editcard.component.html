@@ -1,0 +1,21 @@
+<mat-toolbar>
+  <button mat-icon-button class="close-button" [mat-dialog-close]="true" (click)="onClose()">
+    <mat-icon class="close-icon" color="warn">close</mat-icon>
+  </button>
+</mat-toolbar>
+<form class="normal-form" (submit)="onSubmit()">
+  <mat-grid-list cols="2" rowHeight="300px">
+    <mat-grid-tile>
+      <div class="controles-container" style="margin-top: 40px;">
+        <input type="hidden" formControlName="$key">
+        <mat-form-field>
+          <input id="stockrank" matInput placeholder="Stock Rank">
+        </mat-form-field>
+        <mat-form-field>
+          <input id="companyrank" matInput placeholder="Company Rank">
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" >Submit</button>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>
