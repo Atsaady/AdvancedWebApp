@@ -5,6 +5,14 @@
   <input matInput placeholder="Ex. first post" (keyup)="applyFilter($event)" />
 </mat-form-field>
 
+<div class="example-button-row">
+  <button mat-flat-button color="primary" (click)="addTerm()" style="margin-right: 10px;">Add Term</button>
+  <a href="http://localhost:5000/groupby"><button mat-flat-button color="primary" >Group By</button></a>
+
+</div>
+
+<br>
+
 <div>
   <table mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="title">
@@ -38,11 +46,11 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item>
+          <button mat-menu-item (click)="editTerm(row.title, row.description, row.firstLetter)">
             <mat-icon>edit</mat-icon>
             <span>Edit</span>
           </button>
-          <button mat-menu-item>
+          <button mat-menu-item (click)="deleteTerm(row.title)">
             <mat-icon>delete</mat-icon>
             <span>Delete</span>
           </button>

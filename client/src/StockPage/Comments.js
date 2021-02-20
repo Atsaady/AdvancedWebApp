@@ -10,7 +10,6 @@ async function fetchComments(stockname) {
       `http://localhost:5000/stocks/${stockname}/comments`
     );
     let responseJson = await response.json();
-    console.log(responseJson);
     return responseJson;
   } catch (error) {
     console.error(error);
@@ -24,9 +23,6 @@ export default function Comments(props) {
   function sendComment(event) {
     event.preventDefault();
     const data = new FormData(event.target);
-    console.log(data.get("username"));
-
-    console.log(data.get("comment"));
 
     props.socket.emit(
       "new-comment",
@@ -41,13 +37,11 @@ export default function Comments(props) {
     fetchComments(props.stockName).then((data) => setComments(data));
   }, [setComments]);
 
-  console.log(comments);
 
   // Get new Comment from server for the specific stock
   useEffect(() => {
     props.socket.on("comment", (comment) => {
       if (props.stockName == comment.stockname) {
-        console.log(comment);
         setComments((comm) => [...comm, comment]);
       }
     });

@@ -48,11 +48,14 @@
     padding: 0;
     overflow: hidden;
     
-    
+    &__li :hover{
+      background-color: salmon;
+    }
 
     &__li {
       float:right;
-      text-decoration:underline;
+      text-decoration:none;
+      color: darkblue;
       &__a {
         display: block;
         padding: 16px;

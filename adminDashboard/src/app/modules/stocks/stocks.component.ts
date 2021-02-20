@@ -46,7 +46,6 @@ export class StocksComponent implements OnInit {
         }
       }
       this.stocks = stocks;
-      console.log(this.stocks);
     });
   }
   // tslint:disable-next-line:typedef

@@ -13,45 +13,31 @@ function footer({ marginTop }) {
       <div className="row">
         <div class="col-1-of-2">
           <p class="footer__copyright">
-            אתר זה נועד למטרות לימודיות בלבד. מפתחי האתר לא מבטיחים שאתר זה מכיל
-            מידע עדכני על מניות או שהאלגורתמים יעזרו לך להיות מליונר ולהכות
-            תשוק. מפתחי האתר אינם אחראים לשום נזק שיגרם מההשקעה או משימוש במידע
-            זה ולכן מזהירים שנית לא לקחת ברצינות את הדיאטה שכתובה פה,חמי אוהבים
-            אותך יאח תן 100. מי שיהיה אמיץ ויגנוב את העיצוב אני יזיין אותו, ראו
-            הוזהרתם !!!
+            אתר זה נועד למטרות לימודיות בלבד. יש להתייחס לכלל הנתונים כלא אמיתיים ואין להתסמך עליהם, בנוסף אין להשתמש במחשבוני חברות בהשקעה אמיתית מחשבונים אלה בסייסים מאוד ולא באמת יכולים לתת מידע אמין על החברה. צוות האתר מאשר העתקה של תוכן זה הן בצד לקוח והן בצד שרת כמובן שנשמח לקרדיט
+            <p>© 2021 כל הזכויות שמורות לאינבסטוק בע"מ </p> 
           </p>
         </div>
         <div className="col-1-of-2">
           <div className="footer__navigation">
             <ul className="footer__list">
               <li className="footer__item">
-                <a href="#" className="footer__link">
-                  אריק
+                <a href="https://www.investopedia.com/" target="_blank" className="footer__link">
+                investopedia
                 </a>
               </li>
               <li className="footer__item">
-                <a href="#" className="footer__link">
-                  עברית
+                <a href="https://finance.yahoo.com/" target="_blank" className="footer__link">
+                yahoo finance
                 </a>
               </li>
               <li className="footer__item">
-                <a href="#" className="footer__link">
-                  מלך הריאקט
+                <a href="https://il.investing.com/" target="_blank" className="footer__link">
+                investing
                 </a>
               </li>
               <li className="footer__item">
-                <a href="#" className="footer__link">
-                  והסטקיים
-                </a>
-              </li>
-              <li className="footer__item">
-                <a href="#" className="footer__link">
-                  מאור
-                </a>
-              </li>
-              <li className="footer__item">
-                <a href="#" className="footer__link">
-                  גלידה
+                <a href="https://stocktwits.com/" target="_blank" className="footer__link">
+                  stocktwits
                 </a>
               </li>
             </ul>

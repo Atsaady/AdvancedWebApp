@@ -24,8 +24,6 @@ const DividerExampleHorizontalTable = ({ stockName }) => {
       retrieveData(stockName).then((data) => setStockDetails(data));
     }
   }, [stockName]);
-  console.log(stockDetails);
-
   if (stockName === null || stockDetails === null) return "";
 
   return (
