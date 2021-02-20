@@ -14,6 +14,8 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { MatTableModule } from '@angular/material/table';
+
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, SidebarComponent],

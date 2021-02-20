@@ -1,8 +1,10 @@
+
 import {Component, OnInit, Inject} from '@angular/core';
 import {StockService} from '../../shared/services/stock.service';
 import {Stock} from '../../shared/models/stock.model';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {EditcardComponent} from '../../editcard/editcard.component';
+
 
 @Component({
   selector: 'app-stocks',
@@ -10,7 +12,6 @@ import {EditcardComponent} from '../../editcard/editcard.component';
   styleUrls: ['./stocks.component.scss'],
 })
 export class StocksComponent implements OnInit {
-
   panelOpenState = false;
 
   // tslint:disable-next-line:ban-types
@@ -27,23 +28,24 @@ export class StocksComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   fetchStocks(): void {
-    this.stocksService.getAllStocks().subscribe(stocks => {
+    this.stocksService.getAllStocks().subscribe((stocks) => {
       // tslint:disable-next-line:prefer-for-of
       for (let i = 0; i < stocks.length; i++) {
         if (stocks[i].rank[0]) {
-          this.stocksService.getRank(stocks[i].rank[0]).subscribe(rank => {
+          this.stocksService.getRank(stocks[i].rank[0]).subscribe((rank) => {
             stocks[i].stockrank = rank[0].stockrank;
             stocks[i].companyrank = rank[0].companyrank;
           });
         }
         if (stocks[i].comments[0]) {
-          this.stocksService.getStockComments(stocks[i].name).subscribe(comm => {
-            stocks[i].commentsData = comm;
-          });
+          this.stocksService
+            .getStockComments(stocks[i].name)
+            .subscribe((comm) => {
+              stocks[i].commentsData = comm;
+            });
         }
       }
       this.stocks = stocks;

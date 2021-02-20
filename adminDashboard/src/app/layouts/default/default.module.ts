@@ -8,11 +8,17 @@ import { TermsComponent } from 'src/app/modules/terms/terms.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
-import {MatListModule} from '@angular/material/list';
-import {MatExpansionModule} from "@angular/material/expansion";
-import {MatIconModule} from "@angular/material/icon";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatButtonModule} from "@angular/material/button";
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { TermsService } from 'src/app/modules/terms.service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatListModule } from '@angular/material/list';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -27,11 +33,17 @@ import {MatButtonModule} from "@angular/material/button";
     SharedModule,
     MatSidenavModule,
     MatDividerModule,
-    MatListModule,
-    MatExpansionModule,
-    MatIconModule,
     MatFormFieldModule,
+    MatExpansionModule,
+    MatListModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatInputModule,
     MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
   ],
+  providers: [TermsService],
 })
 export class DefaultModule {}
