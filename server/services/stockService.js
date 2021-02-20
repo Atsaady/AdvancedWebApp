@@ -30,10 +30,20 @@ const createStock = async (req) => {
       var stock = new stockModel(req.body);
       stock.save(function (err, example) {
         if (err) console.log(err);
-        console.log("New stock created");
+        console.log("NEW STOCK CREATED");
         return stock;
       });
     }
+  });
+};
+
+const updateStock = async (req) => {
+  var stockname = req.body.stockName;
+  const stock = await stockModel.findOne({ name: stockname });
+  rankModel.updateOne({ _id: stock.rank }, {stockrank: req.body.stockrank, companyrank: req.body.companyrank}, function (err, stock) {
+    if (err) console.log(err);
+    console.log("STOCK UPDATED");
+    return stock;
   });
 };
 
@@ -137,5 +147,6 @@ module.exports = {
   getStockComments,
   getHistoricalStockRateByName,
   getStockRankById,
+  updateStock,
   deleteStock,
 };

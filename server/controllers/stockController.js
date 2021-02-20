@@ -29,6 +29,15 @@ exports.createStock = async (req, res) => {
   }
 };
 
+exports.updateStock = async (req, res) => {
+  try {
+    var stock = StockService.updateStock(req);
+    res.send(stock);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
+
 exports.deleteStock = async (req, res) => {
   try {
     var stock = StockService.deleteStock(req);
